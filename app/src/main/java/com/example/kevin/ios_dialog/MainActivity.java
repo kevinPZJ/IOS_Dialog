@@ -7,6 +7,12 @@ import android.widget.Button;
 
 import com.example.kevin.ios_dialog.Ios_Bottom_Dialog.IOS_Bottom_Dialog;
 import com.example.kevin.ios_dialog.Ios_Bottom_Dialog.IOS_ItemClickListener;
+import com.example.kevin.ios_dialog.Ios_Picker_Dialog.OnTimeSelectedListener;
+import com.example.kevin.ios_dialog.Ios_Picker_Dialog.TimePickerDialog;
+import com.example.kevin.ios_dialog.Utils.UIUtils;
+
+import java.text.ParseException;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -37,6 +43,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn5.setOnClickListener(this);
         Button btn6= (Button) findViewById(R.id.btn_6 );
         btn6.setOnClickListener(this);
+        Button btn7= (Button) findViewById(R.id.btn_7 );
+        btn7.setOnClickListener(this);
+
 
     }
 
@@ -158,8 +167,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn_6:
              three();
                 break;
+            case R.id.btn_7:
+                Time();
+                break;
             default:
                 break;
         }
+    }
+
+    private void Time() {
+        TimePickerDialog.Builder builder=new TimePickerDialog.Builder(this);
+        builder
+
+                .setTimeSelectedListener(new OnTimeSelectedListener() {
+                    @Override
+                    public void onTimeSelected(String time) throws ParseException {
+                        UIUtils.showToast(time);
+                    }
+
+                    @Override
+                    public void onCancel() {
+
+                    }
+                }).create().show();
     }
 }
