@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.kevin.ios_dialog.MainActivity">
+
+    <Button
+        android:text="什么都没有"
+        android:id="@+id/btn_0"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+       />
+   <Button
+       android:text="没有Item,只有标题"
+       android:id="@+id/btn_1"
+       android:layout_width="match_parent"
+       android:layout_height="38dp"
+      />
+
+    <Button
+        android:text="1个Item，有标题"
+        android:id="@+id/btn_2"
+        android:layout_width="match_parent"
+        android:layout_height="38dp" />
+
+    <Button
+        android:text="1个Item，无标题"
+        android:id="@+id/btn_3"
+        android:layout_width="match_parent"
+        android:layout_height="38dp" />
+
+    <Button
+        android:text="2个Item，有标题"
+        android:id="@+id/btn_4"
+        android:layout_width="match_parent"
+        android:layout_height="38dp" />
+
+
+    <Button
+        android:text="2个Item，无标题"
+        android:id="@+id/btn_5"
+        android:layout_width="match_parent"
+        android:layout_height="38dp" />
+    <Button
+        android:text="3个Item，有标题"
+        android:id="@+id/btn_6"
+        android:layout_width="match_parent"
+        android:layout_height="38dp" />
+
+</LinearLayout>

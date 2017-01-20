@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="transparent">#00000000</color>
+    <color name="gray_line">#444444</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="black_888888">#888888</color>
+    <color name="text_color_green_013ADF">#013ADF</color>
+    <color name="blue_6eb">#6eb0f3</color>
+    <color name="ios_btn_pressed">#eeeeee</color>
+    <color name="gray_eee">#EEEEEE</color>
+    <color name="blue_afe">#2E9AFE</color>
+    <color name="pink_ece">#F6CECE</color>
+    <color name="red_111">#FF1111</color>
+
+
+
+</resources>
