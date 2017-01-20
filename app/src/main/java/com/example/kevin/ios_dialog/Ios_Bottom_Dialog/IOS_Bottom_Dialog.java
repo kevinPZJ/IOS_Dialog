@@ -21,7 +21,7 @@ import java.util.List;
  * Created by pzj on 2017/1/19.
  */
 
-public class IOS_Dialog extends Dialog{
+public class IOS_Bottom_Dialog extends Dialog{
 
     public static final int DEFAULT_PADDING = 8;
     public static final int DEFAULT_TITLE_SIZE = 20;
@@ -35,7 +35,7 @@ public class IOS_Dialog extends Dialog{
     private IOS_Dialog_DismissListener OnDismissListener;
 
 
-    public IOS_Dialog(Context context) {
+    public IOS_Bottom_Dialog(Context context) {
         //给我们的Dialog定制了一个主题（透明背景，无边框，无标题栏，浮在Activity上面，毛玻璃模糊效果）
         super(context, R.style.ios_bottom_dialog);
         setContentView(R.layout.ios_bottom_dialog);
@@ -51,7 +51,7 @@ public class IOS_Dialog extends Dialog{
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                IOS_Dialog.this.dismiss();
+                IOS_Bottom_Dialog.this.dismiss();
             }
         });
         //Dialog设置
@@ -65,8 +65,6 @@ public class IOS_Dialog extends Dialog{
         lp.width=WindowManager.LayoutParams.MATCH_PARENT;
         lp.height=WindowManager.LayoutParams.WRAP_CONTENT; //设置宽高
         window.setAttributes(lp);
-
-
     }
 
 
@@ -130,8 +128,8 @@ public class IOS_Dialog extends Dialog{
             return  this;
         }
 
-        public IOS_Dialog create(){
-            final IOS_Dialog dialog=new IOS_Dialog(context);
+        public IOS_Bottom_Dialog create(){
+            final IOS_Bottom_Dialog dialog=new IOS_Bottom_Dialog(context);
 
             LinearLayout.LayoutParams params =new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 1);
             if (p.title.isEmpty()|| p.title.equals("")){

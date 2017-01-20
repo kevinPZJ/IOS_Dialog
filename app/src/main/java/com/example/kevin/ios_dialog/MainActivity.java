@@ -5,12 +5,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.kevin.ios_dialog.Ios_Bottom_Dialog.IOS_Dialog;
+import com.example.kevin.ios_dialog.Ios_Bottom_Dialog.IOS_Bottom_Dialog;
 import com.example.kevin.ios_dialog.Ios_Bottom_Dialog.IOS_ItemClickListener;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private  IOS_Dialog.Builder builder;
+    private  IOS_Bottom_Dialog.Builder builder;
 
 
     @Override
@@ -135,7 +135,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        builder =new IOS_Dialog.Builder(this);
+        builder =new IOS_Bottom_Dialog.Builder(this);
         switch (view.getId()){
             case R.id.btn_0:
                 bothNull();
