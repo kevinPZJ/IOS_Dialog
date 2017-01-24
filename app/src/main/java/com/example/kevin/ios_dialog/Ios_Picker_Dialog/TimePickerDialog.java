@@ -164,8 +164,8 @@ public class TimePickerDialog extends Dialog {
         private boolean canCancel = true;
         private OnTimeSelectedListener callback;
         private LoopView loopHour,loopMin;
-        private int hour;
-        private int min;
+        private Integer hour;
+        private Integer min;
         private int tvfinishColor;
         private int tvcancelColor;
 
@@ -173,8 +173,6 @@ public class TimePickerDialog extends Dialog {
             tvcancelColor = Color.BLUE;
             tvfinishColor =  Color.BLUE;
             title="开始时间";
-            hour=12;
-            min=30;
 
 
         }

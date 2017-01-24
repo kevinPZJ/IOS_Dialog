@@ -1,8 +1,12 @@
-package com.example.kevin.ios_dialog.Ios_Bottom_Dialog;
+package com.example.kevin.ios_dialog.Ios_Alert_Dialog;
+
+import com.example.kevin.ios_dialog.Ios_Bottom_Dialog.IOS_Bottom_Dialog;
+import com.example.kevin.ios_dialog.Ios_Bottom_Dialog.IOS_Dialog_DismissListener;
 
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,9 +15,9 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.kevin.ios_dialog.Ios_Bottom_Dialog.IOS_ItemClickListener;
 import com.example.kevin.ios_dialog.R;
 import com.example.kevin.ios_dialog.Utils.UIUtils;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +25,7 @@ import java.util.List;
  * Created by pzj on 2017/1/19.
  */
 
-public class IOS_Bottom_Dialog extends Dialog{
+public class VerticalCenterDialog extends Dialog{
 
     public static final int DEFAULT_PADDING = 8;
     public static final int DEFAULT_TITLE_SIZE = 20;
@@ -31,14 +35,15 @@ public class IOS_Bottom_Dialog extends Dialog{
     private TextView title;
     private View title_line;
     private TextView cancel;
+    private TextView tvContent;
 
     private IOS_Dialog_DismissListener OnDismissListener;
 
 
-    public IOS_Bottom_Dialog(Context context) {
+    public VerticalCenterDialog(Context context) {
         //给我们的Dialog定制了一个主题（透明背景，无边框，无标题栏，浮在Activity上面，毛玻璃模糊效果）
         super(context, R.style.ios_bottom_dialog);
-        setContentView(R.layout.ios_bottom_dialog);
+        setContentView(R.layout.ios_vertical_dialog);
         initView();//初始化原始布局以及Dialog设置
     }
 
@@ -46,23 +51,23 @@ public class IOS_Bottom_Dialog extends Dialog{
 
         title_line = findViewById(R.id.bottom_dialog_title_line);  // 标题分割线
         Item_ll = (LinearLayout) findViewById(R.id.item_ll);        // Item布局
-        title = (TextView) findViewById(R.id.bottom_dialog_title_tv);  //Dialog标题栏
-        cancel= (TextView) findViewById(R.id.bottom_dialog_cancel_tv); //取消按钮
-        cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                IOS_Bottom_Dialog.this.dismiss();
-            }
-        });
+        title = (TextView) findViewById(R.id.bottom_dialog_title_tv);
+        tvContent = (TextView) findViewById(R.id.bottom_dialog_Content);
+//        cancel= (TextView) findViewById(R.id.bottom_dialog_cancel_tv); //取消按钮
+//        cancel.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                VerticalCenterDialog.this.dismiss();
+//            }
+//        });
         //Dialog设置
 
         this.setCanceledOnTouchOutside(true); //点击空白区域可以取消dialog
         this.setCancelable(true); //点击返回键可以取消Dialog
         Window window = this.getWindow();
-        window.setWindowAnimations(R.style.ios_bottom_dialog_anim); // 设置由下到上弹出效果动画
-        window.setGravity(Gravity.BOTTOM); //位置在窗口底部
+        window.setGravity(Gravity.CENTER); //位置在窗口底部
         WindowManager.LayoutParams lp=window.getAttributes();
-        lp.width=WindowManager.LayoutParams.MATCH_PARENT;
+        lp.width=WindowManager.LayoutParams.WRAP_CONTENT;
         lp.height=WindowManager.LayoutParams.WRAP_CONTENT; //设置宽高
         window.setAttributes(lp);
     }
@@ -74,7 +79,7 @@ public class IOS_Bottom_Dialog extends Dialog{
      * */
 
     private static class Params {
-
+        public String content;
         public int titleSize; //标题字体大小
         public int ItemTextSize; //Item字体大小
         public String title;    //标题的text
@@ -85,6 +90,7 @@ public class IOS_Bottom_Dialog extends Dialog{
 
 
         public Params(){
+            content="";
             title="";
             titleColor = Color.BLACK;
             titleSize=DEFAULT_TITLE_SIZE;
@@ -118,6 +124,11 @@ public class IOS_Bottom_Dialog extends Dialog{
 
             return  this;
         }
+        public Builder setContent(String content){
+            p.content = content;
+
+            return  this;
+        }
 
         public Builder addItem(String title,int color ,IOS_ItemClickListener listener){
             p.Items.add(new Item(title,color,listener));
@@ -128,10 +139,14 @@ public class IOS_Bottom_Dialog extends Dialog{
             return  this;
         }
 
-        public IOS_Bottom_Dialog create(){
-            final IOS_Bottom_Dialog dialog=new IOS_Bottom_Dialog(context);
+        public VerticalCenterDialog create(){
+            final VerticalCenterDialog dialog=new VerticalCenterDialog(context);
 
             LinearLayout.LayoutParams params =new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 1);
+
+            if (!TextUtils.isEmpty(p.content)){
+                dialog.tvContent.setText(p.content);
+            }
             if (p.title.isEmpty()|| p.title.equals("")){
                 //默认情况为空，设置标题栏不可见
 
@@ -171,7 +186,7 @@ public class IOS_Bottom_Dialog extends Dialog{
                         public void onClick(View view) {
                             dialog.dismiss();
                             if (item.getListener()!=null){   //Item监听器
-                               item.listener.OnItemClick();
+                                item.listener.OnItemClick();
                             }
                         }
                     });

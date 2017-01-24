@@ -1,4 +1,19 @@
 <resources>
     <string name="app_name">IOS_Dialog</string>
     <string name="cancel">取消</string>
+
+
+
+    <string-array name="list">
+        <item> Java</item>
+        <item> C </item>
+        <item> C++</item>
+        <item> Php</item>
+        <item>Python</item>
+        <item>Html5</item>
+        <item>Web</item>
+
+    </string-array>
+
+
 </resources>
